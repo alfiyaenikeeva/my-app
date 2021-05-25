@@ -11,17 +11,18 @@ const StyledNav = styled.nav`
 
   @media (max-width: 480px) {
     flex-flow: column nowrap;
-    padding-left: 20px;
+    align-items: center;
     justify-content: space-around;
-    position: fixed;
-    width: 50%;
+    position: absolute;
+    width: 100%;
     top: 92px;
     right: 0;
-    transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
+    transform: ${({ open }) => open ? 'translateY(0)' : 'translateY(-100%)'};
+    opacity: ${({ open }) => open ? '1' : '0'};
     background: white;
     border: 1px solid #F8F8F8;
-    border-radius: 0 0 0 10px;
-    transition: transform 0.3s ease-in-out;
+    border-radius: 0 0 10px 10px;
+    transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
   }
 `;
 

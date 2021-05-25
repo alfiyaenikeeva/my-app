@@ -1,0 +1,53 @@
+.menu {
+  padding-top: 64px;
+  padding-bottom: 120px;
+  background: #FDFDFF;
+
+  h1 {
+    margin-bottom: 48px;
+    padding: 0 10px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 64px;
+    line-height: 77px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #212542;
+    text-align: center;
+
+    span {
+      background: url("../../assets/images/svg/heart.svg") center center / cover no-repeat;
+      width: 57px;
+      height: 46px;
+      display: inline-block;
+    }
+  }
+
+  .cards {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .menu {
+    padding-top: 36px;
+    padding-bottom: 80px;
+
+    h1 {
+      font-size: 50px;
+      line-height: 56px;
+
+      span {
+        width: 48px;
+        height: 39px;
+      }
+    }
+
+    .cards {
+      display: block;
+    }
+  }
+}

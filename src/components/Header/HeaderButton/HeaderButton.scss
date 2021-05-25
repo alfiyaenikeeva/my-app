@@ -1,0 +1,32 @@
+.button {
+  display: flex;
+  align-items: center;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 53px;
+
+  img {
+    margin-right: 10px;
+  }
+
+  span {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #212542;
+  }
+
+  &:nth-child(1) {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    margin-left: 0;
+    padding: 20px 0;
+  }
+}

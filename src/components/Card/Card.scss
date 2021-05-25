@@ -1,0 +1,40 @@
+.card {
+  max-width: 380px;
+  width: 100%;
+  border: 1px solid #F4F5FF;
+  border-radius: 30px;
+
+  .card-image {
+    max-height: 305px;
+    height: 100%;
+    background: #F1F7FF;
+    border-radius: 30px 30px 0px 0px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .card-info {
+    padding: 24px 28px 24px 24px;
+    .card-name {
+      margin-bottom: 8px;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 22px;
+      color: #212542;
+    }
+
+    .card-price {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 16px;
+      color: rgba(33, 37, 66, 0.7);
+    }
+  }
+}
+

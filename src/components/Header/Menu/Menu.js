@@ -40,6 +40,7 @@ const Menu = ({ open }) => (
       img={cart}
       alt="cart"
       text="Cart"
+      notifications={1}
     />
   </StyledNav>
 );

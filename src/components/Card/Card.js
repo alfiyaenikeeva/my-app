@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 
 import './Card.scss';
 
-const Card = ({text, image, price, id}) => {
+const Card = ({title, image, price, id}) => {
   let history = useHistory();
 
   function handleClick() {
@@ -19,7 +19,7 @@ const Card = ({text, image, price, id}) => {
         <img src={image} alt="ice-cream"/>
       </div>
       <div className="card-info">
-        <p className="card-name">{text}</p>
+        <p className="card-name">{title}</p>
         <span className="card-price">${price}</span>
       </div>
     </div>

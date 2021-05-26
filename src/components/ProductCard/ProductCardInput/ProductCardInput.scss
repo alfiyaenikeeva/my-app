@@ -1,0 +1,14 @@
+.product-card-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 16px;
+    color: rgba(33, 37, 66, 0.7);
+  }
+}

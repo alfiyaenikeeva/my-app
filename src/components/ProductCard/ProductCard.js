@@ -1,11 +1,18 @@
 import React from 'react';
 
+import ProductCardBtn from './ProductCardBtn/ProductCardBtn';
+import ProductCardInput from './ProductCardInput/ProductCardInput';
+import MainNav from '../MainNav/MainNav';
+
 import image from '../../assets/images/png/product ice cream.png';
 import './ProductCard.scss';
 
 const ProductCard = () => (
   <div className="product-card">
+    <MainNav />
     <div className="container">
+
+
       <div className="product-card-image">
         <img src={image} alt="product" />
       </div>
@@ -22,17 +29,10 @@ const ProductCard = () => (
         <div className="product-card-flex">
           <span className="product-card-price">$243.00</span>
 
-          <div className="product-card-input">
-            <div className="product-card-btn"></div>
-            <span>1</span>
-            <div className="product-card-btn"></div>
-          </div>
+          <ProductCardInput />
         </div>
 
-        <button className="product-card-button">
-          <span></span>
-          <span>Add to cart</span>
-        </button>
+        <ProductCardBtn />
       </div>
     </div>
   </div>

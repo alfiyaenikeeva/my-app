@@ -1,16 +1,14 @@
-import Card from './components/Card/Card';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Main from './components/Main/Main';
 
-import image from './assets/images/svg/ice cream.png';
 import './App.css';
 
 const App = () => (
   <div className="App">
-    App
-    <Card
-      text="Snow Tender Ice Cream"
-      image={image}
-      price="243.00"
-    />
+    <Header />
+    <Main />
+    <Footer />
   </div>
 );
 

@@ -45,7 +45,7 @@ const Main = () => {
   ];
 
   return (
-    <div className="menu">
+    <div className="main">
       <h1>I <span></span> ice cream</h1>
       <div className="container cards">
         { cardsArray.map((card) => <Card {...card} />) }

@@ -8,9 +8,8 @@ const HeaderNav = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <React.Fragment>
+    <>
       <div
-        open={open}
         onClick={() => setOpen(!open)}
         className={open ? "burger open" : "burger"}
       >
@@ -19,7 +18,7 @@ const HeaderNav = () => {
         <span></span>
       </div>
       <Menu open={open} />
-    </React.Fragment>
+    </>
   );
 };
 

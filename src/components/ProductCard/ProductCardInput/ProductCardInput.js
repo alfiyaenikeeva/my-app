@@ -3,21 +3,19 @@ import { useState } from "react";
 
 import './ProductCardInput.scss';
 
-const ProductCardInput = () => {
-  const [count, setCount] = useState(1);
-
+const ProductCardInput = ({ count, onCountClick }) => {
   function onMinusClick() {
     if (count === 1) {
       return;
     }
-    setCount(count - 1);
+    onCountClick(-1);
   }
 
   function onPlusClick() {
     if (count === 3) {
       return;
     }
-    setCount(count + 1);
+    onCountClick(1);
   }
 
   return (

@@ -3,10 +3,10 @@ import React from 'react';
 import HeaderButton from '../HeaderButton/HeaderButton';
 
 import user from "../../../assets/images/svg/user.svg";
-import cart from "../../../assets/images/svg/cart.svg";
+import cartIcon from "../../../assets/images/svg/cart.svg";
 import './Menu.scss';
 
-const Menu = ({ open }) => (
+const Menu = ({ open, cart }) => (
   <div
     className={open ? "header-nav open" : "header-nav"}
   >
@@ -16,10 +16,10 @@ const Menu = ({ open }) => (
       text="Sign up"
     />
     <HeaderButton
-      img={cart}
+      img={cartIcon}
       alt="cart"
       text="Cart"
-      notifications={4}
+      notifications={cart.length}
     />
   </div>
 );

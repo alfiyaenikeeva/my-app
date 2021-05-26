@@ -4,7 +4,7 @@ import Menu from '../Menu/Menu';
 
 import './HeaderNav.scss';
 
-const HeaderNav = () => {
+const HeaderNav = ({ cart }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -17,7 +17,7 @@ const HeaderNav = () => {
         <span></span>
         <span></span>
       </div>
-      <Menu open={open} />
+      <Menu open={open} cart={cart} />
     </>
   );
 };

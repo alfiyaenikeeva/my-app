@@ -1,7 +1,7 @@
 .main-nav {
   padding-bottom: 40px;
   background: #FDFDFF;
-  span {
+  span, a {
     font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -17,6 +17,7 @@
 
     &:first-child {
       cursor: pointer;
+      text-decoration: none;
     }
 
     &:first-child:hover {

@@ -13,7 +13,7 @@ const App = () => (
     <Router>
       <Switch>
         <Route exact path="/" component={Main} />
-        <Route path="/card" component={ProductCard} />
+        <Route path="/card/:id?" component={ProductCard} />
       </Switch>
     </Router>
     <Footer />

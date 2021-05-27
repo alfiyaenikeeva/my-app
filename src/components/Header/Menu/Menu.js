@@ -6,7 +6,9 @@ import user from "../../../assets/images/svg/user.svg";
 import cartIcon from "../../../assets/images/svg/cart.svg";
 import './Menu.scss';
 
-const Menu = ({ open, cart }) => (
+// dobavit cart .length
+
+const Menu = ({ open }) => (
   <div
     className={open ? "header-nav open" : "header-nav"}
   >
@@ -19,7 +21,7 @@ const Menu = ({ open, cart }) => (
       img={cartIcon}
       alt="cart"
       text="Cart"
-      notifications={cart.length}
+      notifications={6}
     />
   </div>
 );

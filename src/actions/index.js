@@ -18,6 +18,12 @@ const setCartsTotal = () => {
   }
 };
 
+const setCartsPriceTotal = () => {
+  return {
+    type: 'SET_CARTS_PRICE_TOTAL',
+  }
+}
+
 const setIsAddBtnLoading = () => {
   return {
     type: 'SET_IS_ADD_BTN_LOADING',
@@ -36,4 +42,5 @@ export {
   setCartsTotal,
   setIsAddBtnLoading,
   resetIsAddBtnSuccess,
+  setCartsPriceTotal,
 };

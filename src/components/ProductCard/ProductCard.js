@@ -4,22 +4,25 @@ import ProductCardBtn from './ProductCardBtn/ProductCardBtn';
 import ProductCardInput from './ProductCardInput/ProductCardInput';
 import MainNav from '../MainNav/MainNav';
 import { connect } from "react-redux";
-import { addToCart, setCartsTotal } from '../../actions/index';
+import {addToCart, setCartsPriceTotal, setCartsTotal} from '../../actions/index';
 
 import './ProductCard.scss';
 
-const ProductCard = ({ match, addToCart, cards, setCartsTotal }) => {
+const ProductCard = ({ match, addToCart, cards, setCartsTotal, setCartsPriceTotal }) => {
   const [count, setCount] = useState(1);
 
   function onAddToCart() {
     const obj = {
       price,
+      title,
+      image,
       id: cardId,
       amount: count,
     };
 
     addToCart(obj);
     setCartsTotal();
+    setCartsPriceTotal();
   }
 
   function onCountClick(n) {
@@ -87,6 +90,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addToCart: (obj) => dispatch(addToCart(obj)),
     setCartsTotal: () => dispatch(setCartsTotal()),
+    setCartsPriceTotal: () => dispatch(setCartsPriceTotal()),
   };
 };
 

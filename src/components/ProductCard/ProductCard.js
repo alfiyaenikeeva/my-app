@@ -45,7 +45,7 @@ const ProductCard = ({ match, addToCart, cards, setCartsTotal }) => {
 
   return (
     <div className="product-card">
-      <MainNav />
+      <MainNav text="Product card" />
       <div className="container">
 
         <div className="product-card-image">

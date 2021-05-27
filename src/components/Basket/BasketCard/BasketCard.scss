@@ -1,0 +1,120 @@
+.basket-card {
+  display: flex;
+  align-items: center;
+  padding-bottom: 24px;
+  padding-top: 24px;
+  border-bottom: 1px solid #F4F5FF;
+  &-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 96px;
+    max-width: 120px;
+    margin-right: 24px;
+    width: 100%;
+    background: #F1F7FF;
+    border-radius: 10px;
+  }
+
+  &-info {
+    align-self: flex-start;
+    margin-top: 16px;
+    flex: 1;
+  }
+
+  &-title {
+    margin-bottom: 16px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 18px;
+    color: #212542;
+  }
+
+  &-amount {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 14px;
+    color: rgba(33, 37, 66, 0.7);
+  }
+
+  &-price {
+    margin-left: 16px;
+    margin-right: 16px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 16px;
+    color: rgba(33, 37, 66, 0.7);
+  }
+
+  &-btn {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #CACCDE;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:before, &:after {
+      position: absolute;
+      top: 9px;
+      left: 4px;
+      display: block;
+      width: 12px;
+      height: 2px;
+      background-color: #CACCDE;
+      border-radius: 2px;
+      content: '';
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .basket-card {
+    position: relative;
+    &-btn {
+      position: absolute;
+      top: 25px;
+      right: 0;
+      width: 36px;
+      height: 36px;
+
+      &:after, &:before {
+        width: 17px;
+        top: 15px;
+        left: 7px;
+      }
+    }
+
+    &-image {
+      margin-right: 10px;
+    }
+
+    &-price {
+      margin-right: 0;
+      margin-left: 0;
+      margin-top: auto;
+    }
+
+    &-info {
+      margin-top: 10px;
+    }
+  }
+}

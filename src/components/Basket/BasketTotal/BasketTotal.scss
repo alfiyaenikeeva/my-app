@@ -1,0 +1,61 @@
+.basket-total {
+  min-width: 340px;
+  padding: 32px;
+  background: #FFFFFF;
+  border: 1px solid #F4F5FF;
+  border-radius: 24px;
+
+  &-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #F4F5FF;
+    margin-bottom: 24px;
+  }
+
+  &-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 18px;
+    color: #212542;
+  }
+
+  &-price {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 18px;
+    color: #212542;
+  }
+
+  &-btn {
+    width: 100%;
+    padding: 22px 0;
+    text-align: center;
+    border: 0;
+    background: linear-gradient(92.65deg, #DFEBFF -21.79%, #88ADCA 126.46%), #AECEF3;
+    border-radius: 69px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    color: #FFFFFF;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .basket-total {
+    width: 100%;
+    min-width: auto;
+  }
+}

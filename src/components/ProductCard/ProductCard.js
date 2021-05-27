@@ -3,14 +3,12 @@ import React, { useState } from 'react';
 import ProductCardBtn from './ProductCardBtn/ProductCardBtn';
 import ProductCardInput from './ProductCardInput/ProductCardInput';
 import MainNav from '../MainNav/MainNav';
-
-import cardsArr from "../../cards-arr/cards-arr";
+import withCardsService from "../hoc/withCardsService";
 
 import './ProductCard.scss';
 
-const ProductCard = ({ match, addToCart }) => {
+const ProductCard = ({ match, addToCart, cardsService }) => {
   const [count, setCount] = useState(1);
-  const [cart, setCart] = useState([]);
 
   // function addToCart() {
   //   const obj = {
@@ -42,7 +40,7 @@ const ProductCard = ({ match, addToCart }) => {
 
   const cardId = match.params.id;
 
-  const productCard = cardsArr.find(card => card.id == cardId);
+  const productCard = cardsService.getCards().find(card => card.id == cardId);
   const {
     image,
     code,
@@ -88,4 +86,4 @@ const ProductCard = ({ match, addToCart }) => {
   );
 };
 
-export default ProductCard;
+export default withCardsService()(ProductCard);

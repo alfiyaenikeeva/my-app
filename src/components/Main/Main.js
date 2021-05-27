@@ -1,15 +1,15 @@
 import React from 'react';
 
 import Card from '../Card/Card';
+import withCardsService from "../hoc/withCardsService";
 
 import './Main.scss';
-import cardsArr from '../../cards-arr/cards-arr';
 
-const Main = () => (
+const Main = ({ cardsService }) => (
     <div className="main">
       <h1>I <span></span> ice cream</h1>
       <div className="container cards">
-        { cardsArr.map(({ image,
+        { cardsService.getCards().map(({ image,
                           title,
                           price,
                           id,
@@ -18,4 +18,4 @@ const Main = () => (
     </div>
   );
 
-export default Main;
+export default withCardsService()(Main);

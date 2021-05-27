@@ -3,25 +3,14 @@ import React, { useState } from 'react';
 import ProductCardBtn from './ProductCardBtn/ProductCardBtn';
 import ProductCardInput from './ProductCardInput/ProductCardInput';
 import MainNav from '../MainNav/MainNav';
-import withCardsService from "../hoc/withCardsService";
+import { connect } from "react-redux";
+import { addToCart, setCartsTotal } from '../../actions/index';
 
 import './ProductCard.scss';
 
-const ProductCard = ({ match, addToCart, cardsService }) => {
-  const [count, setCount] = useState(1);
 
-  // function addToCart() {
-  //   const obj = {
-  //     price,
-  //     id: cardId,
-  //     amount: count,
-  //   };
-  //
-  //   setCart([
-  //     ...cart,
-  //     obj,
-  //   ])
-  // }
+const ProductCard = ({ match, addToCart, cards, setCartsTotal }) => {
+  const [count, setCount] = useState(1);
 
   function onAddToCart() {
     const obj = {
@@ -30,8 +19,8 @@ const ProductCard = ({ match, addToCart, cardsService }) => {
       amount: count,
     };
 
-    console.log(obj);
     addToCart(obj);
+    setCartsTotal();
   }
 
   function onCountClick(n) {
@@ -40,14 +29,19 @@ const ProductCard = ({ match, addToCart, cardsService }) => {
 
   const cardId = match.params.id;
 
-  const productCard = cardsService.getCards().find(card => card.id == cardId);
+  const productCard = cards.find(card => card.id == cardId);
+
+  if (!productCard) {
+    return <div className="main">Card not found!</div>
+  }
+
   const {
-    image,
-    code,
-    title,
-    descr1,
-    descr2,
-    price,
+    image = '',
+    code = '',
+    title = '',
+    descr1 = '',
+    descr2 = '',
+    price = '',
   } = productCard;
 
   return (
@@ -86,4 +80,15 @@ const ProductCard = ({ match, addToCart, cardsService }) => {
   );
 };
 
-export default withCardsService()(ProductCard);
+const mapStateToProps = ({ cards }) => {
+  return { cards };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addToCart: (obj) => dispatch(addToCart(obj)),
+    setCartsTotal: () => dispatch(setCartsTotal()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductCard);

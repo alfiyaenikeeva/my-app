@@ -1,12 +1,13 @@
 import React from 'react';
 
 import HeaderButton from '../HeaderButton/HeaderButton';
+import { connect } from "react-redux";
 
 import user from "../../../assets/images/svg/user.svg";
-import cart from "../../../assets/images/svg/cart.svg";
+import cartIcon from "../../../assets/images/svg/cart.svg";
 import './Menu.scss';
 
-const Menu = ({ open }) => (
+const Menu = ({ open, cartsTotal }) => (
   <div
     className={open ? "header-nav open" : "header-nav"}
   >
@@ -16,12 +17,16 @@ const Menu = ({ open }) => (
       text="Sign up"
     />
     <HeaderButton
-      img={cart}
+      img={cartIcon}
       alt="cart"
       text="Cart"
-      notifications={4}
+      notifications={cartsTotal}
     />
   </div>
 );
 
-export default Menu;
+const mapStateToProps = ({ cartsTotal }) => {
+  return { cartsTotal };
+};
+
+export default connect(mapStateToProps)(Menu);

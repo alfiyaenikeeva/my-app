@@ -4,7 +4,7 @@ import './Footer.scss';
 import logo from "../../assets/images/svg/logo.svg";
 
 const Footer = () => (
-  <React.Fragment>
+  <div className="footer">
     <div className="footer-top">
       <div className="container">
         <div className="footer-logo">
@@ -26,7 +26,7 @@ const Footer = () => (
         © 2021 Justice-team. All rights reserved.
       </div>
     </div>
-  </React.Fragment>
+  </div>
 );
 
 export default Footer;

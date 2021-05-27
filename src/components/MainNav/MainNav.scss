@@ -1,0 +1,28 @@
+.main-nav {
+  padding-bottom: 40px;
+  background: #FDFDFF;
+  span, a {
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 14px;
+    color: #212542;
+    opacity: 0.5;
+
+    &:last-child {
+      color: #212542;
+      opacity: 1;
+    }
+
+    &:first-child {
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    &:first-child:hover {
+      color: #212542;
+      opacity: 1;
+    }
+  }
+}

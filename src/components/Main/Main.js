@@ -1,57 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Card from '../Card/Card';
+import { connect } from 'react-redux';
+import withCardsService from "../hoc/withCardsService";
+import { cardsLoaded } from "../../actions";
 
 import './Main.scss';
-import image from '../../assets/images/png/ice cream.png';
 
-const Main = () => {
-  const cardsArray = [
-    {
-      image,
-      text: 'Snow Tender Ice Cream',
-      price: '243.00',
-    },
-    {
-      image,
-      text: 'Snow Tender Ice Cream',
-      price: '243.00',
-    },
-    {
-      image,
-      text: 'Snow Tender Ice Cream',
-      price: '243.00',
-    },
-    {
-      image,
-      text: 'Snow Tender Ice Cream',
-      price: '243.00',
-    },
-    {
-      image,
-      text: 'Snow Tender Ice Cream',
-      price: '243.00',
-    },
-    {
-      image,
-      text: 'Snow Tender Ice Cream',
-      price: '243.00',
-    },
-    {
-      image,
-      text: 'Snow Tender Ice Cream',
-      price: '243.00',
-    },
-  ];
+class Main extends Component {
+  componentDidMount() {
+    const { cardsService, cardsLoaded } = this.props;
+    const data = cardsService.getCards();
+    cardsLoaded(data);
+  }
 
-  return (
-    <div className="menu">
-      <h1>I <span></span> ice cream</h1>
-      <div className="container cards">
-        { cardsArray.map((card) => <Card {...card} />) }
+  render() {
+    const { cards } = this.props;
+
+    return (
+      <div className="main">
+        <h1>I <span></span> ice cream</h1>
+        <div className="container cards">
+          { cards.map(({ image,
+                         title,
+                         price,
+                         id,
+                       }) => <Card image={image} title={title} price={price} id={id} key={id} />) }
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+}
+
+const mapStateToProps = ({ cards }) => {
+  return { cards };
 };
 
-export default Main;
+const mapDispatchToProps = {
+  cardsLoaded,
+}
+
+export default withCardsService()(connect(mapStateToProps, mapDispatchToProps)(Main));

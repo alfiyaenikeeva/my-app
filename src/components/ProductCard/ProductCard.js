@@ -1,15 +1,28 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 
 import ProductCardBtn from './ProductCardBtn/ProductCardBtn';
 import ProductCardInput from './ProductCardInput/ProductCardInput';
 import MainNav from '../MainNav/MainNav';
 import { connect } from "react-redux";
-import {addToCart, setCartsPriceTotal, setCartsTotal} from '../../actions/index';
+import {addToCart, setCartsPriceTotal, setCartsTotal, resetIsAddBtnSuccess} from '../../actions/index';
 
 import './ProductCard.scss';
 
-const ProductCard = ({ match, addToCart, cards, setCartsTotal, setCartsPriceTotal }) => {
+const ProductCard = ({ match, addToCart, cards, setCartsTotal, setCartsPriceTotal, isAddBtnLoading, resetIsAddBtnSuccess }) => {
   const [count, setCount] = useState(1);
+
+  useEffect(() => {
+    return () => {
+      resetIsAddBtnSuccess();
+    }
+  }, [])
+
+  useEffect(() => {
+    if (isAddBtnLoading) {
+      return;
+    }
+    setTimeout(resetIsAddBtnSuccess, 2000);
+  }, [isAddBtnLoading]);
 
   function onAddToCart() {
     const obj = {
@@ -82,8 +95,8 @@ const ProductCard = ({ match, addToCart, cards, setCartsTotal, setCartsPriceTota
   );
 };
 
-const mapStateToProps = ({ cards }) => {
-  return { cards };
+const mapStateToProps = ({ cards, isAddBtnLoading, }) => {
+  return { cards, isAddBtnLoading };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -91,6 +104,7 @@ const mapDispatchToProps = (dispatch) => {
     addToCart: (obj) => dispatch(addToCart(obj)),
     setCartsTotal: () => dispatch(setCartsTotal()),
     setCartsPriceTotal: () => dispatch(setCartsPriceTotal()),
+    resetIsAddBtnSuccess: () => dispatch(resetIsAddBtnSuccess()),
   };
 };
 

@@ -38,6 +38,14 @@ const reducer = (state = initialState, action) => {
           newCard,
         ],
       }
+    case 'DELETE_FROM_CART':
+      const id = action.payload;
+      return {
+        ...state,
+        cart: [
+          ...state.cart.filter((card) => card.id !== id),
+        ],
+      }
     case 'SET_CARTS_TOTAL':
       const total = state.cart.reduce((prev, next, i) => prev + next.amount, 0);
 

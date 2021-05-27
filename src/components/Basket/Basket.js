@@ -4,14 +4,31 @@ import MainNav from '../MainNav/MainNav';
 import BasketCard from './BasketCard/BasketCard';
 import BasketTotal from './BasketTotal/BasketTotal';
 import { connect } from 'react-redux';
+import {
+  deleteFromCart,
+  setCartsTotal,
+  setCartsPriceTotal,
+} from '../../actions/index';
 
 import './Basket.scss';
 
-const Basket = ({ cart, cartsPriceTotal }) => {
+const Basket = ({
+                  cart,
+                  cartsPriceTotal,
+                  deleteFromCart,
+                  setCartsTotal,
+                  setCartsPriceTotal,
+                }) => {
   function createInner(cardsArr) {
     return cardsArr.map(card => {
       return (
-        <BasketCard {...card} key={card.id} />
+        <BasketCard
+          {...card}
+          key={card.id}
+          deleteFromCart={deleteFromCart}
+          setCartsTotal={setCartsTotal}
+          setCartsPriceTotal={setCartsPriceTotal}
+        />
       )
     });
   }
@@ -39,8 +56,10 @@ const mapStateToProps = ({ cart, cartsPriceTotal }) => {
   return { cart, cartsPriceTotal };
 };
 
-// const mapDispatchToProps = {
-//   cardsLoaded,
-// }
+const mapDispatchToProps = {
+  deleteFromCart,
+  setCartsTotal,
+  setCartsPriceTotal,
+}
 
-export default connect(mapStateToProps)(Basket);
+export default connect(mapStateToProps, mapDispatchToProps)(Basket);

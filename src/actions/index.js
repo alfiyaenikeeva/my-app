@@ -16,10 +16,24 @@ const setCartsTotal = () => {
   return {
     type: 'SET_CARTS_TOTAL',
   }
-}
+};
+
+const setIsAddBtnLoading = () => {
+  return {
+    type: 'SET_IS_ADD_BTN_LOADING',
+  }
+};
+
+const resetIsAddBtnSuccess = () => {
+  return {
+    type: 'RESET_IS_ADD_BTN_SUCCESS',
+  }
+};
 
 export {
   cardsLoaded,
   addToCart,
   setCartsTotal,
+  setIsAddBtnLoading,
+  resetIsAddBtnSuccess,
 };

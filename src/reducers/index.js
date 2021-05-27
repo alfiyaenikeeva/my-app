@@ -2,6 +2,8 @@ const initialState = {
   cards: [],
   cart: [],
   cartsTotal: 1,
+  isAddBtnLoading: false,
+  isAddBtnSuccess: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -13,7 +15,6 @@ const reducer = (state = initialState, action) => {
       };
     case 'ADD_TO_CART':
       const obj = action.payload;
-      const index = state.cart.findIndex((card) => card.id === obj.id);
       const card = state.cart.find((card) => card.id === obj.id);
       let newCard;
       if (card) {
@@ -29,6 +30,8 @@ const reducer = (state = initialState, action) => {
 
       return {
         ...state,
+        isAddBtnLoading: false,
+        isAddBtnSuccess: true,
         cart: [
           ...state.cart.filter((card) => card.id !== obj.id),
           newCard,
@@ -43,6 +46,16 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         cartsTotal: total,
+      }
+    case 'SET_IS_ADD_BTN_LOADING':
+      return {
+        ...state,
+        isAddBtnLoading: true,
+      }
+    case 'RESET_IS_ADD_BTN_SUCCESS':
+      return {
+        ...state,
+        isAddBtnSuccess: false,
       }
     default:
       return state;

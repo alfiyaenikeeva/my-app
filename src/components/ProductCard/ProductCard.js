@@ -8,7 +8,6 @@ import { addToCart, setCartsTotal } from '../../actions/index';
 
 import './ProductCard.scss';
 
-
 const ProductCard = ({ match, addToCart, cards, setCartsTotal }) => {
   const [count, setCount] = useState(1);
 

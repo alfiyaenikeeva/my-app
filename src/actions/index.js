@@ -63,6 +63,13 @@ const setIsRegistered = (bool) => {
   }
 };
 
+const setIsLogged = (bool) => {
+  return {
+    type: 'SET_IS_LOGGED',
+    payload: bool,
+  }
+};
+
 export {
   cardsLoaded,
   addToCart,
@@ -74,4 +81,5 @@ export {
   checkoutCart,
   setIsModal,
   setIsRegistered,
+  setIsLogged,
 };

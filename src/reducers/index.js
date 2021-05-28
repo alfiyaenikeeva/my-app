@@ -7,6 +7,7 @@ const initialState = {
   isAddBtnSuccess: false,
   isModal: false,
   isRegistered: false,
+  isLogged: true,
 };
 
 const reducer = (state = initialState, action) => {
@@ -86,10 +87,14 @@ const reducer = (state = initialState, action) => {
         isModal: action.payload,
       }
     case 'SET_IS_REGISTERED':
-      console.log('is registered' + action.payload);
       return {
         ...state,
         isRegistered: action.payload,
+      }
+    case 'SET_IS_LOGGED':
+      return {
+        ...state,
+        isLogged: action.payload,
       }
     default:
       return state;

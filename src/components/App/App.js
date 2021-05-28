@@ -3,15 +3,24 @@ import { Route, Switch } from 'react-router-dom';
 
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import RegisterModal from '../Modal/RegistrModal';
+import LoginModal from '../Modal/LoginModal';
 import Main from '../Main/Main';
 import Basket from '../Basket/Basket';
 import ProductCard from '../ProductCard/ProductCard';
 
 import './App.css';
 
-const App = () => (
-  <div className="app">
-    <Header />
+const App = () => {
+  const isModal = true
+  const isRegistered = true;
+
+  return (
+    <div className="app">
+      {
+        isModal && isRegistered ? <LoginModal /> : <RegisterModal />
+      }
+      <Header />
       <Switch>
         <Route exact path="/" component={Main} />
 
@@ -25,8 +34,9 @@ const App = () => (
           component={Basket}
         />
       </Switch>
-    <Footer />
-  </div>
-);
+      <Footer />
+    </div>
+  );
+};
 
 export default App;

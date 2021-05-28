@@ -10,16 +10,16 @@ import Basket from '../Basket/Basket';
 import ProductCard from '../ProductCard/ProductCard';
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
-import {setIsRegistered, setIsModal} from "../../actions";
+import {setIsRegistered, setIsModal, setIsLogged} from "../../actions";
 
 import './App.css';
 
-const App = ({ isModal, isRegistered, setIsRegistered, setIsModal }) => (
+const App = ({ isModal, isRegistered, setIsRegistered, setIsModal, setIsLogged }) => (
   <div className="app">
     <Header />
     {
       isModal && isRegistered
-        ? <LoginModal isModal isRegistered setIsModal={setIsModal} setIsRegistered={setIsRegistered}/>
+        ? <LoginModal isModal isRegistered setIsModal={setIsModal} setIsRegistered={setIsRegistered} setIsLogged={setIsLogged}/>
         : isModal && !isRegistered ?
         <RegisterModal isModal isRegistered setIsModal={setIsModal} setIsRegistered={setIsRegistered}/> : null
     }
@@ -48,6 +48,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setIsRegistered: (bool) => dispatch(setIsRegistered(bool)),
     setIsModal: (bool) => dispatch(setIsModal(bool)),
+    setIsLogged: (bool) => dispatch(setIsLogged(bool)),
   };
 };
 

@@ -9,12 +9,12 @@ import Main from '../Main/Main';
 import Basket from '../Basket/Basket';
 import ProductCard from '../ProductCard/ProductCard';
 import { connect } from "react-redux";
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import {setIsRegistered, setIsModal, setIsLogged} from "../../actions";
 
 import './App.css';
 
-const App = ({ isModal, isRegistered, setIsRegistered, setIsModal, setIsLogged }) => (
+const App = ({ isModal, isRegistered, setIsRegistered, setIsModal, setIsLogged, isLogged }) => (
   <div className="app">
     <Header />
     {
@@ -24,24 +24,27 @@ const App = ({ isModal, isRegistered, setIsRegistered, setIsModal, setIsLogged }
         <RegisterModal isModal isRegistered setIsModal={setIsModal} setIsRegistered={setIsRegistered}/> : null
     }
     <Switch >
+      <Route exact path="/" component={Main} />
       <Route
         path="/card/:id?"
         component={ProductCard}
       />
-
-      <Route
-        path="/basket"
-        component={Basket}
-      />
-
-      <Route exact path="/" component={Main} />
+      {
+        isLogged
+          ?
+          <Route
+            path="/basket"
+            component={Basket}
+          />
+          : <Redirect to="/" />
+      }
     </Switch>
     <Footer />
   </div>
 );
 
-const mapStateToProps = ({ isModal, isRegistered }) => {
-  return { isModal, isRegistered };
+const mapStateToProps = ({ isModal, isRegistered, isLogged }) => {
+  return { isModal, isRegistered, isLogged };
 };
 
 const mapDispatchToProps = (dispatch) => {

@@ -148,7 +148,7 @@ const RegisterModal = ({ setIsModal, setIsRegistered }) => {
               console.log('sign in');
               setIsRegistered(true);
             }}
-          >Sing in</a>
+          >Sign in</a>
         </div>
       </div>
     </div>

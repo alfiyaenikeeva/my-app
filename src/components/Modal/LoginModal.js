@@ -9,9 +9,9 @@ const LoginModal = ({setIsRegistered, setIsModal, setIsLogged}) => {
   });
 
   const [ isValid, setIsValid ] = useState({
-    email: true,
-    password: true,
-    data: true,
+    email: 'init',
+    password: 'init',
+    data: 'init',
   });
 
   function handleInputChange(e) {
@@ -58,17 +58,20 @@ const LoginModal = ({setIsRegistered, setIsModal, setIsLogged}) => {
       })
     }
 
-    if (isValid.password && isValid.email) {
-      console.log(value);
-
+    if (isValid.password === true && isValid.email === true) {
       const email = localStorage.getItem('email');
       const password = localStorage.getItem('password');
 
       if (email === value.email && password === value.password) {
         setIsLogged(true);
         setIsModal(false);
+
+        setValue({
+          name: '',
+          email: '',
+          password: '',
+        });
       } else {
-        console.log('dannye ne verny')
         setIsValid((prevState) => {
           return {
             ...prevState,
@@ -76,12 +79,6 @@ const LoginModal = ({setIsRegistered, setIsModal, setIsLogged}) => {
           }
         })
       }
-
-      setValue({
-        name: '',
-        email: '',
-        password: '',
-      });
     }
   }
 

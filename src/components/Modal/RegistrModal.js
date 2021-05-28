@@ -12,9 +12,9 @@ const RegisterModal = ({ setIsModal, setIsRegistered }) => {
   });
 
   const [ isValid, setIsValid ] = useState({
-    name: true,
-    email: true,
-    password: true,
+    name: 'init',
+    email: 'init',
+    password: 'init',
   });
 
   function handleInputChange(e) {
@@ -69,7 +69,7 @@ const RegisterModal = ({ setIsModal, setIsRegistered }) => {
       })
     }
 
-    if (isValid.password && isValid.name && isValid.email) {
+    if (isValid.password === true && isValid.name === true && isValid.email === true) {
       localStorage.setItem('email', value.email);
       localStorage.setItem('password', value.password);
 
@@ -144,10 +144,7 @@ const RegisterModal = ({ setIsModal, setIsRegistered }) => {
         <div className="modal-footer">
           <p className="modal-text">Do you already have an account? </p>
           <a
-            onClick={() => {
-              console.log('sign in');
-              setIsRegistered(true);
-            }}
+            onClick={() => setIsRegistered(true)}
           >Sign in</a>
         </div>
       </div>

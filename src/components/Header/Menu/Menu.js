@@ -8,11 +8,14 @@ import user from "../../../assets/images/svg/user.svg";
 import cartIcon from "../../../assets/images/svg/cart.svg";
 import './Menu.scss';
 
-const Menu = ({ open, setIsModal, cartsTotal, isRegistered, setIsLogged, isLogged, history }) => {
+const Menu = ({ open, setIsModal, cartsTotal, isRegistered, setIsLogged, isLogged, history, setOpen }) => {
   const signUpLink = (
     <a
       className="button"
-      onClick={() => setIsModal(true)}
+      onClick={() => {
+        setIsModal(true);
+        setOpen(!open);
+      }}
     >
       <img src={user} alt="user" />
       <span>Sign up</span>
@@ -22,7 +25,10 @@ const Menu = ({ open, setIsModal, cartsTotal, isRegistered, setIsLogged, isLogge
   const signInLink = (
     <a
       className="button"
-      onClick={() => setIsModal(true)}
+      onClick={() => {
+        setIsModal(true);
+        setOpen(!open);
+      }}
     >
       <img src={user} alt="user" />
       <span>Sign in</span>
@@ -32,7 +38,10 @@ const Menu = ({ open, setIsModal, cartsTotal, isRegistered, setIsLogged, isLogge
   const signOutLink = (
     <a
       className="button"
-      onClick={() => setIsLogged(false)}
+      onClick={() => {
+        setIsLogged(false);
+        setOpen(!open);
+      }}
     >
       <img src={user} alt="user" />
       <span>Sign out</span>
@@ -52,6 +61,7 @@ const Menu = ({ open, setIsModal, cartsTotal, isRegistered, setIsLogged, isLogge
       <a
         onClick={
           () => {
+            setOpen(!open);
             isLogged ? history.push('/basket') : setIsModal(true)
           }
         }

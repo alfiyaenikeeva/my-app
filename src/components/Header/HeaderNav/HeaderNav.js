@@ -17,7 +17,7 @@ const HeaderNav = ({ cart }) => {
         <span></span>
         <span></span>
       </div>
-      <Menu open={open} cart={cart} />
+      <Menu open={open} cart={cart} setOpen={setOpen} />
     </>
   );
 };

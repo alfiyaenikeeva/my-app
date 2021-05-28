@@ -46,6 +46,11 @@ const reducer = (state = initialState, action) => {
           ...state.cart.filter((card) => card.id !== id),
         ],
       }
+    case 'CHECKOUT_CART':
+      return {
+        ...state,
+        cart: [],
+      }
     case 'SET_CARTS_TOTAL':
       const total = state.cart.reduce((prev, next, i) => prev + next.amount, 0);
 

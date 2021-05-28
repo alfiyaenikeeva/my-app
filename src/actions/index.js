@@ -43,6 +43,12 @@ const deleteFromCart = (id) => {
   }
 };
 
+const checkoutCart = () => {
+  return {
+    type: 'CHECKOUT_CART',
+  }
+};
+
 export {
   cardsLoaded,
   addToCart,
@@ -51,4 +57,5 @@ export {
   resetIsAddBtnSuccess,
   setCartsPriceTotal,
   deleteFromCart,
+  checkoutCart,
 };

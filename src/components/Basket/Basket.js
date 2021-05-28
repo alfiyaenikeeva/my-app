@@ -8,6 +8,7 @@ import {
   deleteFromCart,
   setCartsTotal,
   setCartsPriceTotal,
+  checkoutCart,
 } from '../../actions/index';
 
 import './Basket.scss';
@@ -18,6 +19,7 @@ const Basket = ({
                   deleteFromCart,
                   setCartsTotal,
                   setCartsPriceTotal,
+                  checkoutCart,
                 }) => {
   function createInner(cardsArr) {
     return cardsArr.map(card => {
@@ -33,6 +35,12 @@ const Basket = ({
     });
   }
 
+  function onCheckoutClick() {
+    checkoutCart();
+    setCartsTotal();
+    setCartsPriceTotal();
+  }
+
   const inner = cart.length !== 0 ? createInner(cart) : <div>Cart is empty!</div>;
 
   return (
@@ -45,7 +53,10 @@ const Basket = ({
           <div className="basket-cards">
             { inner }
           </div>
-          <BasketTotal total={cartsPriceTotal} />
+          <BasketTotal
+            onCheckoutClick={onCheckoutClick}
+            total={cartsPriceTotal}
+          />
         </div>
       </div>
     </div>
@@ -60,6 +71,7 @@ const mapDispatchToProps = {
   deleteFromCart,
   setCartsTotal,
   setCartsPriceTotal,
+  checkoutCart,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Basket);

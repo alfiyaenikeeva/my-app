@@ -1,13 +1,23 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
-
 import './Modal.scss';
 
-const RegisterModal = () => (
-  <div className="modal">
-    <div className="modal-inner">
-      <div className="modal-close"></div>
+const RegisterModal = ({ setIsModal, setIsRegistered }) => (
+  <div
+    role="button"
+    onClick={() => {
+      setIsModal(false);
+    }}
+    className="modal"
+  >
+    <div
+      onClick={e => e.stopPropagation()}
+      className="modal-inner"
+    >
+      <div
+        onClick={() => setIsModal(false)}
+        className="modal-close"
+      ></div>
       <p className="modal-title">Create an account</p>
       <form className="modal-form">
         <label htmlFor="name">Name</label>
@@ -26,7 +36,12 @@ const RegisterModal = () => (
 
       <div className="modal-footer">
         <p className="modal-text">Do you already have an account? </p>
-        <Link to="/register">Sing in</Link>
+        <a
+          onClick={() => {
+            console.log('sign in');
+            setIsRegistered(true);
+          }}
+        >Sing in</a>
       </div>
     </div>
   </div>

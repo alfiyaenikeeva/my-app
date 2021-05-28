@@ -49,6 +49,20 @@ const checkoutCart = () => {
   }
 };
 
+const setIsModal = (bool) => {
+  return {
+    type: 'SET_IS_MODAL',
+    payload: bool,
+  }
+};
+
+const setIsRegistered = (bool) => {
+  return {
+    type: 'SET_IS_REGISTERED',
+    payload: bool,
+  }
+};
+
 export {
   cardsLoaded,
   addToCart,
@@ -58,4 +72,6 @@ export {
   setCartsPriceTotal,
   deleteFromCart,
   checkoutCart,
+  setIsModal,
+  setIsRegistered,
 };

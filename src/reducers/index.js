@@ -5,6 +5,8 @@ const initialState = {
   cartsPriceTotal: 0,
   isAddBtnLoading: false,
   isAddBtnSuccess: false,
+  isModal: false,
+  isRegistered: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -77,6 +79,17 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isAddBtnSuccess: false,
+      }
+    case 'SET_IS_MODAL':
+      return {
+        ...state,
+        isModal: action.payload,
+      }
+    case 'SET_IS_REGISTERED':
+      console.log('is registered' + action.payload);
+      return {
+        ...state,
+        isRegistered: action.payload,
       }
     default:
       return state;

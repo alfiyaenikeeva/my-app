@@ -1,0 +1,44 @@
+.basket {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  background: #FDFDFF;
+  min-height: calc(100vh - 252px);
+
+  &-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 36px;
+    color: #212542;
+  }
+  &-layout {
+    display: flex;
+    align-items: flex-start;
+  }
+  &-title {
+
+  }
+  &-cards {
+    flex: 1;
+    margin-top: 24px;
+    margin-right: 69px;
+  }
+}
+
+@media (max-width: 991px) {
+  .basket {
+    &-layout {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-cards {
+      width: 100%;
+      margin-top: 20px;
+      margin-right: 0;
+      margin-bottom: 30px;
+    }
+  }
+}

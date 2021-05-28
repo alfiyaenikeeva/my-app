@@ -1,25 +1,41 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 
 import ProductCardBtn from './ProductCardBtn/ProductCardBtn';
 import ProductCardInput from './ProductCardInput/ProductCardInput';
 import MainNav from '../MainNav/MainNav';
 import { connect } from "react-redux";
-import { addToCart, setCartsTotal } from '../../actions/index';
+import {addToCart, setCartsPriceTotal, setCartsTotal, resetIsAddBtnSuccess} from '../../actions/index';
 
 import './ProductCard.scss';
 
-const ProductCard = ({ match, addToCart, cards, setCartsTotal }) => {
+const ProductCard = ({ match, addToCart, cards, setCartsTotal, setCartsPriceTotal, isAddBtnLoading, resetIsAddBtnSuccess }) => {
   const [count, setCount] = useState(1);
+
+  useEffect(() => {
+    return () => {
+      resetIsAddBtnSuccess();
+    }
+  }, [])
+
+  useEffect(() => {
+    if (isAddBtnLoading) {
+      return;
+    }
+    setTimeout(resetIsAddBtnSuccess, 2000);
+  }, [isAddBtnLoading]);
 
   function onAddToCart() {
     const obj = {
       price,
+      title,
+      image,
       id: cardId,
       amount: count,
     };
 
     addToCart(obj);
     setCartsTotal();
+    setCartsPriceTotal();
   }
 
   function onCountClick(n) {
@@ -45,7 +61,7 @@ const ProductCard = ({ match, addToCart, cards, setCartsTotal }) => {
 
   return (
     <div className="product-card">
-      <MainNav />
+      <MainNav text="Product card" />
       <div className="container">
 
         <div className="product-card-image">
@@ -79,14 +95,16 @@ const ProductCard = ({ match, addToCart, cards, setCartsTotal }) => {
   );
 };
 
-const mapStateToProps = ({ cards }) => {
-  return { cards };
+const mapStateToProps = ({ cards, isAddBtnLoading, }) => {
+  return { cards, isAddBtnLoading };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     addToCart: (obj) => dispatch(addToCart(obj)),
     setCartsTotal: () => dispatch(setCartsTotal()),
+    setCartsPriceTotal: () => dispatch(setCartsPriceTotal()),
+    resetIsAddBtnSuccess: () => dispatch(resetIsAddBtnSuccess()),
   };
 };
 

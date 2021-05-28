@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HeaderButton from '../HeaderButton/HeaderButton';
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import user from "../../../assets/images/svg/user.svg";
@@ -11,17 +11,17 @@ const Menu = ({ open, cartsTotal }) => (
   <div
     className={open ? "header-nav open" : "header-nav"}
   >
-    <HeaderButton
-      img={user}
-      alt="user"
-      text="Sign up"
-    />
-    <HeaderButton
-      img={cartIcon}
-      alt="cart"
-      text="Cart"
-      notifications={cartsTotal}
-    />
+    <Link to='/' className="button">
+      <img src={user} alt="user" />
+      <span>Sign up</span>
+    </Link>
+
+    <Link to='/basket' className="button">
+      <img src={cartIcon} alt="user" />
+      {cartsTotal ? <div>{cartsTotal}</div> : null}
+      <span>Cart</span>
+    </Link>
+
   </div>
 );
 

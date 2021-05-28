@@ -18,6 +18,12 @@ const setCartsTotal = () => {
   }
 };
 
+const setCartsPriceTotal = () => {
+  return {
+    type: 'SET_CARTS_PRICE_TOTAL',
+  }
+}
+
 const setIsAddBtnLoading = () => {
   return {
     type: 'SET_IS_ADD_BTN_LOADING',
@@ -30,10 +36,26 @@ const resetIsAddBtnSuccess = () => {
   }
 };
 
+const deleteFromCart = (id) => {
+  return {
+    type: 'DELETE_FROM_CART',
+    payload: id,
+  }
+};
+
+const checkoutCart = () => {
+  return {
+    type: 'CHECKOUT_CART',
+  }
+};
+
 export {
   cardsLoaded,
   addToCart,
   setCartsTotal,
   setIsAddBtnLoading,
   resetIsAddBtnSuccess,
+  setCartsPriceTotal,
+  deleteFromCart,
+  checkoutCart,
 };

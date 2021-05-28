@@ -1,6 +1,7 @@
 import React from 'react';
 
 import HeaderNav from './HeaderNav/HeaderNav';
+import { Link } from "react-router-dom";
 
 import './Header.scss';
 import logo from '../../assets/images/svg/logo.svg';
@@ -8,9 +9,9 @@ import logo from '../../assets/images/svg/logo.svg';
 const Header = ({ cart }) => (
   <div className="header">
     <div className="container">
-      <div className="header-logo">
+      <Link className="header-logo" to="/">
         <img src={logo} alt="logo" />
-      </div>
+      </Link>
       <HeaderNav cart={cart} />
     </div>
   </div>

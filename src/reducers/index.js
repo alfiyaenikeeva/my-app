@@ -1,7 +1,8 @@
 const initialState = {
   cards: [],
   cart: [],
-  cartsTotal: 1,
+  cartsTotal: 0,
+  cartsPriceTotal: 0,
   isAddBtnLoading: false,
   isAddBtnSuccess: false,
 };
@@ -37,15 +38,35 @@ const reducer = (state = initialState, action) => {
           newCard,
         ],
       }
+    case 'DELETE_FROM_CART':
+      const id = action.payload;
+      return {
+        ...state,
+        cart: [
+          ...state.cart.filter((card) => card.id !== id),
+        ],
+      }
+    case 'CHECKOUT_CART':
+      return {
+        ...state,
+        cart: [],
+      }
     case 'SET_CARTS_TOTAL':
       const total = state.cart.reduce((prev, next, i) => prev + next.amount, 0);
-
-      console.log(total);
-      console.log(state.cart);
 
       return {
         ...state,
         cartsTotal: total,
+      }
+    case 'SET_CARTS_PRICE_TOTAL':
+      const priceTotal = state.cart.reduce((prev, next, i) => {
+        return prev + (next.price * next.amount);
+      }, 0);
+      console.log(priceTotal.toFixed(2));
+
+      return {
+        ...state,
+        cartsPriceTotal: priceTotal.toFixed(2),
       }
     case 'SET_IS_ADD_BTN_LOADING':
       return {

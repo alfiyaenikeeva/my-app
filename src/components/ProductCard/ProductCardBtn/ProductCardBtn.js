@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { connect } from "react-redux";
@@ -10,8 +10,7 @@ const ProductCardBtn = ({
                           addToCart,
                           isAddBtnLoading,
                           isAddBtnSuccess,
-                          setIsAddBtnLoading,
-                          resetIsAddBtnSuccess
+                          setIsAddBtnLoading
 }) => {
   const ButtonInner = () => (
     <>
@@ -26,13 +25,6 @@ const ProductCardBtn = ({
       <span>Added to cart</span>
     </span>
   );
-
-  useEffect(() => {
-    if (isAddBtnLoading) {
-      return;
-    }
-    setTimeout(resetIsAddBtnSuccess, 2000);
-  }, [isAddBtnLoading]);
 
   function onAddClick() {
     if (isAddBtnLoading) {
